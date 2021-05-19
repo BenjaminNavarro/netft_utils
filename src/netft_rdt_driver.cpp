@@ -127,7 +127,7 @@ void RDTCommand::pack(uint8_t *buffer) const
 
 NetFTRDTDriver::NetFTRDTDriver(const std::string &address) :
   address_(address),
-  socket_(io_service_),
+  socket_(io_service_.get_executor()),
   stop_recv_thread_(false),
   recv_thread_running_(false),
   packet_count_(0),
